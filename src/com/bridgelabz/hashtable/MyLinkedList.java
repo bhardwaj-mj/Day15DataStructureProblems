@@ -2,6 +2,7 @@ package com.bridgelabz.hashtable;
 
 public class MyLinkedList<K> {
     INode<K> head;
+
     INode<K> tail;
 
     public MyLinkedList() {
@@ -50,4 +51,5 @@ public class MyLinkedList<K> {
     public String toString() {
         return " \n{" + head + "}";
     }
+
 }
