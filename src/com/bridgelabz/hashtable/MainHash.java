@@ -5,15 +5,22 @@ public class MainHash {
         HashTable<String, Integer> hashTable1 = new HashTable<>(10);
         String paragraph = "Paranoids are not paranoid because they are paranoid but because they keep putting themselves deliberately into paranoid avoidable situations";
         String[] array = paragraph.split(" ");
-        for (String str:array) {
+        for (String str : array) {
             Integer frequencyValue = hashTable1.findFrequency(str);
-            if (frequencyValue==null){
-                frequencyValue=1;
-            }else {
-                frequencyValue+=1;
+            if (frequencyValue == null) {
+                frequencyValue = 1;
+            } else {
+                frequencyValue += 1;
             }
-            hashTable1.add(str,frequencyValue);
+            hashTable1.add(str, frequencyValue);
         }
         System.out.println(hashTable1);
+        String str1 = "avoidable";
+        for (String string : array) {
+            if (string.equals(str1)) {
+                hashTable1.delete(string);
+                System.out.println(hashTable1);
+            }
+        }
     }
 }
