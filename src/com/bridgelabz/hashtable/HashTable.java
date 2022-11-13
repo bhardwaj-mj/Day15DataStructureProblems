@@ -1,12 +1,10 @@
 package com.bridgelabz.hashtable;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class HashTable<K,V> {
     List<MyLinkedList> myBucketArray;
     int bucketSize;
-
     public HashTable() {
     }
     public HashTable(int bucketSize) {
@@ -16,12 +14,10 @@ public class HashTable<K,V> {
             myBucketArray.add(i, null);
         }
     }
-
     public int getIndex(K key) {
         int index = Math.abs(key.hashCode() % bucketSize);
         return index;
     }
-
     public void add(K key, V value) {
         int indexValue = getIndex(key);
         MyLinkedList<K> myLinkedList1 = myBucketArray.get(indexValue);
@@ -41,9 +37,12 @@ public class HashTable<K,V> {
                 myLinkedList1.add(newNode);
             }
         }
-
     }
-
+    public void delete(K key) {
+        int indexValue = getIndex(key);
+        MyLinkedList<K> myLinkedList1 = myBucketArray.get(indexValue);
+        myLinkedList1.deletion(key);
+    }
     public V findFrequency(K key){
         int indexValue = getIndex(key);
         MyLinkedList<K> myLinkedList1 = myBucketArray.get(indexValue);
@@ -56,13 +55,10 @@ public class HashTable<K,V> {
             }else {
                 return searchNode.getValue();
             }
-
         }
     }
-
     @Override
     public String toString() {
         return  ""+ myBucketArray ;
-
     }
 }

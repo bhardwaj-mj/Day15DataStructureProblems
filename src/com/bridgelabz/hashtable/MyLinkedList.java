@@ -2,12 +2,9 @@ package com.bridgelabz.hashtable;
 
 public class MyLinkedList<K> {
     INode<K> head;
-
     INode<K> tail;
-
     public MyLinkedList() {
     }
-
     public void add(INode<K> newNode) {
         if (head == null) {
             head = newNode;
@@ -18,7 +15,23 @@ public class MyLinkedList<K> {
             head.setNext(tempNode);
         }
     }
-
+    public Boolean deletion(K deleteData){
+        INode<K> deleteNode=search(deleteData);
+        INode<K> temp = head;
+        while (temp!=null) {
+            if (temp == deleteNode){
+                head = deleteNode.getNext();
+                break;
+            }
+            else if (temp.getNext() == deleteNode) {
+                temp.setNext(deleteNode.getNext());
+                deleteNode.setNext(null);
+                return true;
+            }
+            temp=temp.getNext();
+        }
+        return false;
+    }
     INode<K> search(K searchData) {
         INode<K> temp = head;
         while (temp != null) {
@@ -29,13 +42,11 @@ public class MyLinkedList<K> {
         }
         return null;
     }
-
     public INode<K> pop() {
         INode<K> tempNode = this.head;
         this.head = head.getNext();
         return tempNode;
     }
-
     public void printMyNodes() {
         INode<K> temp = head;
         if (head == null) {
@@ -46,10 +57,8 @@ public class MyLinkedList<K> {
             temp = temp.getNext();
         }
     }
-
     @Override
     public String toString() {
         return " \n{" + head + "}";
     }
-
 }
