@@ -1,6 +1,7 @@
 package com.bridgelabz.hashtable;
 
 public class MyMapNode<K,V> implements INode<K> {
+
     private K key;
     private V value ;
     private MyMapNode<K,V> next;
